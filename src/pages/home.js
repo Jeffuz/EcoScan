@@ -2,7 +2,9 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>home</div>
+    <div className='bg-black text-white'>
+      Hi
+    </div>
   )
 }
 
