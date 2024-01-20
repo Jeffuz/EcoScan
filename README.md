@@ -22,7 +22,7 @@ npm start
 # Enable virtual enviornment in the second terminal
 .\env\Scripts\activate # Run for Windows
 source env/bin/activate # Run for MacOS
-# Install flask and start up server within the virtual env.
-pip install flask
+# Pip install packages and start up server within the virtual env.
+pip install -r requirements.txt
 python server.py
 ```
