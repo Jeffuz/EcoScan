@@ -4,3 +4,4 @@ requests
 lxml
 openai
 python-dotenv
+firebase
