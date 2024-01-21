@@ -4,3 +4,5 @@ requests
 lxml
 openai
 python-dotenv
+firebase
+firebase-admin

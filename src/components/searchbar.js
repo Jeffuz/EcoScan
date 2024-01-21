@@ -5,8 +5,17 @@ const SearchBar = ({ onClose }) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSearch = () => {
-    // Implement your search logic using the 'searchInput' value
-    console.log('Searching for:', searchInput);
+    // Make an HTTP request to your Flask server
+    fetch(`http://127.0.0.1:5000/?searchInput=${searchInput}`)
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response data from Flask (optional)
+        console.log('Response from Flask:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
     // Clear the input after searching (optional)
     setSearchInput('');
   };

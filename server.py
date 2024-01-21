@@ -1,16 +1,26 @@
-from flask import Flask
+from flask import Flask, request
 from bs4 import BeautifulSoup
 import requests
 import lxml
 from dotenv import load_dotenv
 from openai import OpenAI
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
 import os
 from headers import HEADERS
 
 # setup
-# app = Flask(__name__)
+app = Flask(__name__)
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
+
+# Firebase Setup
+cred = credentials.Certificate('eco-scan-firebase-adminsdk-zb1aw-f22f3c50fd.json')
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://eco-scan-default-rtdb.firebaseio.com'
+})
+ans = db.reference('answers')
 
 # Scrape Content Based on ID
 def scrape_elements_content(url, headers, element_ids):
@@ -25,11 +35,10 @@ def scrape_elements_content(url, headers, element_ids):
 
     return result
 
-def feed_scrape_data():
-    URL = "https://www.amazon.com/FIJI-Natural-Artesian-Water-Bottles/dp/B004CQWWKY/ref=sr_1_6?crid=D6D3LZ418MWN&dib=eyJ2IjoiMSJ9.OYfqDH42qGsr8I-Y0uDMiK8TtHOp2ZEafDNxVUEVpfwU_y0t3J8UoKZ1B1FV3Vlqk7UV9Xk0ChHrhsi3-olCxIOFVLGUeOFu2RHmo4BxsCA6dtNx1Ra6plAEg0D4mkmcdVhinPcXBnGQngxkDbOJzfagYLqTN62afCAEpTdfkgB7zIZiwnZkkoLQTnw9UQn_P8rW0CVZecbOwjHe1qnrbXMXJJxOANG2sUrcaHk0fn48GP-mcwbzOJYokt0FrJt9BnNfjxnMOuEkgr0aNqvMHEewu_nx0KuHNuYC1qAro10.VbELEiS-dWao_m98C-t4HJ47WUTkC5VNnpulG74hGKs&dib_tag=se&keywords=water&qid=1705812005&sprefix=water%2Caps%2C165&sr=8-6"
+def feed_scrape_data(url):
     element_ids_to_scrape = ["productTitle", "productFactsDesktopExpander", "feature-bullets", "productDetails_detailBullets_sections1", "productDescription", "important-information", "aplus"]
     headers = HEADERS
-    scraped_elements = scrape_elements_content(URL, headers, element_ids_to_scrape)
+    scraped_elements = scrape_elements_content(url, headers, element_ids_to_scrape)
 
     return scraped_elements
     
@@ -52,14 +61,20 @@ def process_AI(queary):
         ]
     )
 
-    print(completion.choices[0].message)
+    return completion.choices[0].message.content
 
-process_AI(feed_scrape_data())
+def write_to_firebase(data):
+    ans.set({
+        'test': data
+    })
 
-# @app.route("/")
-# def homePage():
-#     pass
+@app.route("/")
+def homePage():
+    search_input = request.args.get('searchInput', default='', type=str)
+    url = str(search_input)
+    write_to_firebase(str(process_AI(feed_scrape_data(url))))
+    return str(process_AI(feed_scrape_data(url)))
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
 
