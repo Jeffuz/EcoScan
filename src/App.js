@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ResultPage from "./pages/ResultPage";
+import ContactPage from "./pages/ContactPage";
 // import { testFirebase } from "./firebaseTest.js";
 
 /* 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/result" element={<ResultPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </>
   );
