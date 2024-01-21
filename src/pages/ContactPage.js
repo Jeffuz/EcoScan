@@ -29,7 +29,7 @@ const ContactPage = () => {
                             <div className='flex justify-end'>
                                 <button
                                     type='submit'
-                                    className='bg-[#4B6989] text-white rounded-md p-2 hover:bg-blue-700'
+                                    className='bg-[#4B6989] text-white rounded-md p-2 hover:bg-[#4b6989b9]'
                                 >
                                     Submit
                                 </button>

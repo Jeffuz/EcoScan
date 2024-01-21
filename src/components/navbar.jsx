@@ -9,7 +9,7 @@ const Navbar = ({ navbarColor }) => {
         <img src={logoImage} alt="Logo" className="logo-img h-12 mr-4" />
       </Link>
 
-      <div className="flex font-mono gap-8">
+      <div className="flex font-mono gap-12">
         <Link to="/" className="text-white text-lg no-underline hover:text-gray-400 duration-300">
           Home
         </Link>
