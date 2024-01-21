@@ -63,7 +63,7 @@ const SearchBar = ({ onClose }) => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           className="border border-gray-300 p-2 mb-4 w-full rounded"
-          placeholder="https://amazon.com/..."
+          placeholder="Currently only supporting Amazon links..."
         />
         <button onClick={handleSearch} className="bg-[#a5b3c4] text-white px-4 py-2 rounded-full">
           {isLoading ? 'Loading...' : 'Search'}
