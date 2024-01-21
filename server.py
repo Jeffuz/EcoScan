@@ -26,7 +26,7 @@ def scrape_elements_content(url, headers, element_ids):
     return result
 
 def feed_scrape_data():
-    URL = "https://www.amazon.com/Teenage-Mutant-Ninja-Turtles-83281/dp/B0BKH84VDB/ref=pd_ci_mcx_mh_mcx_views_0?pd_rd_w=WDZiW&content-id=amzn1.sym.a849384c-231b-4855-a877-41dbabe368a3%3Aamzn1.symc.1065d246-0415-4243-928d-c7025bdd9a27&pf_rd_p=a849384c-231b-4855-a877-41dbabe368a3&pf_rd_r=FDJA3PDTAGHPKSR9K9TZ&pd_rd_wg=Lz4hO&pd_rd_r=5ad289d3-9a4e-44b1-a0b9-4d6b78a68164&pd_rd_i=B0BKH84VDB&th=1"
+    URL = "https://www.amazon.com/FIJI-Natural-Artesian-Water-Bottles/dp/B004CQWWKY/ref=sr_1_6?crid=D6D3LZ418MWN&dib=eyJ2IjoiMSJ9.OYfqDH42qGsr8I-Y0uDMiK8TtHOp2ZEafDNxVUEVpfwU_y0t3J8UoKZ1B1FV3Vlqk7UV9Xk0ChHrhsi3-olCxIOFVLGUeOFu2RHmo4BxsCA6dtNx1Ra6plAEg0D4mkmcdVhinPcXBnGQngxkDbOJzfagYLqTN62afCAEpTdfkgB7zIZiwnZkkoLQTnw9UQn_P8rW0CVZecbOwjHe1qnrbXMXJJxOANG2sUrcaHk0fn48GP-mcwbzOJYokt0FrJt9BnNfjxnMOuEkgr0aNqvMHEewu_nx0KuHNuYC1qAro10.VbELEiS-dWao_m98C-t4HJ47WUTkC5VNnpulG74hGKs&dib_tag=se&keywords=water&qid=1705812005&sprefix=water%2Caps%2C165&sr=8-6"
     element_ids_to_scrape = ["productTitle", "productFactsDesktopExpander", "feature-bullets", "productDetails_detailBullets_sections1", "productDescription", "important-information", "aplus"]
     headers = HEADERS
     scraped_elements = scrape_elements_content(URL, headers, element_ids_to_scrape)
