@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ref, get } from 'firebase/database';
-import db from '../firebaseTest'; 
+import db from '../firebase'; 
 
 const ResultPage = () => {
   const [data, setData] = useState('');
