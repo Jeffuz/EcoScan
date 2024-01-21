@@ -40,7 +40,14 @@ const SearchBar = ({ onClose }) => {
           setSearchInput('');
           setErrorMessage('');
           setIsLoading(false);
-          Navigate('/result');
+
+          const currentPath = window.location.pathname;
+
+          if (currentPath === '/result') {
+            window.location.reload();
+          } else {
+            Navigate('/result');
+          }
         });
     } else {
       setErrorMessage('Please enter a valid Amazon link.');
