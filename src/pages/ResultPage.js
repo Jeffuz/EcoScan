@@ -54,7 +54,7 @@ const ResultPage = () => {
           <Navbar navbarColor='bg-slate-800 hover:bg-opacity-15 bg-opacity-10 duration-100' />
           <div className='h-screen flex flex-col justify-center items-center gap-8'>
             <div className='text-3xl font-bold text-white text-center container mx-auto'>{productTitle}</div>
-            <div className='text-md font-medium text-white container mx-auto'><div dangerouslySetInnerHTML={{ __html: data }} /></div>
+            <div className='text-md font-medium text-white container mx-auto h-[55vh] overflow-auto'><div dangerouslySetInnerHTML={{ __html: data }} /></div>
             <button onClick={handleGetStarted} className='font-mono bg-slate-900 text-white px-6 py-3 rounded-full 
           no-underline transition-transform transform hover:scale-105 duration-300 font-semibold'>Click to scan another link
             </button>
