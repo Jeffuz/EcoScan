@@ -1,25 +1,3 @@
-// import React from 'react';
-// import background from './background-image.png'
-// import Navbar from '../components/navbar';
-
-
-// const Home = () => {
-//   return (
-//     <div className='min-h-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
-    
-//       <Navbar/>
-//       <div className='p-32 text-left text-white'>
-//         <h1 className='text-8xl font-bold mb-6 drop-shadow-xl'>Discover. Link. <br /> Thrive Sustainably.</h1>
-//         <p className='text-2xl mb-8 drop-shadow-lg'>
-//           Explore products, trace their impact, and join <br />a community dedicated to conscious choices for <br />a greener tomorrow.
-//         </p>
-//         <button className='bg-slate-800 text-white px-6 py-3 rounded-full'>Get Started</button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Home;
 import React, { useState } from 'react';
 import background from './background-image.png';
 import Navbar from '../components/navbar';
@@ -37,17 +15,20 @@ const Home = () => {
   };
 
   return (
-    <div className='min-h-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
-      <Navbar />
-      <div className='p-32 text-left text-white'>
-        <h1 className='font-mono text-7xl font-medium mb-8 drop-shadow-xl'>Embark. Sustain. <br /> Preserve Our Earth.</h1>
-        <p className='font-mono text-lg mb-10 drop-shadow-lg'>
-          Empower your choices, unveil eco-impact, <br />and embark on a journey to a greener lifestyle <br />with our enlightening platform.  .
-        </p>
-        <button onClick={handleGetStarted} className='hover:bg-slate-900 font-mono bg-slate-800 text-white px-6 py-3 rounded-full'>Get Started</button>
-      </div>
+    <div className='h-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
+      <div className='absolute inset-0 backdrop-filter backdrop-blur-sm bg-slate-900 bg-opacity-40'>
+        <Navbar navbarColor='bg-slate-800 hover:bg-opacity-15 bg-opacity-10 duration-100' />
+        <div className='px-36 pt-52 text-left text-white'>
+          <h1 className='font-mono text-8xl font-bold mb-6 drop-shadow-2xl'>Discover. Link. <br /> Thrive Sustainably.</h1>
+          <p className='font-mono text-xl mb-8 drop-shadow-2xl'>
+            Explore products, trace their impact, and join <br />a community dedicated to conscious choices for <br />a greener tomorrow.
+          </p>
+          <button onClick={handleGetStarted} className='font-mono bg-slate-900 text-white px-6 py-3 rounded-full 
+          no-underline transition-transform transform hover:scale-105 duration-300 font-semibold'>Paste Your Link Here and Get Started</button>
+        </div>
 
-      {isSearchOpen && <SearchBar onClose={handleCloseSearch} />}
+        {isSearchOpen && <SearchBar onClose={handleCloseSearch} />}
+      </div>
     </div>
   );
 };

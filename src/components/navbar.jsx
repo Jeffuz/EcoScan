@@ -2,21 +2,21 @@ import React from 'react';
 import logoImage from './logo-white2.png';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ navbarColor }) => {
   return (
-    <div className="py-4 px-24 flex justify-between items-center bg-slate-800 bg-opacity-10">
-      <Link to="/about" className="no-underline">
+    <div className={`py-4 px-28 flex justify-between items-center fixed ${navbarColor} w-[100%]`}>
+      <Link to="/" className="no-underline transition-transform transform hover:scale-105 duration-300">
         <img src={logoImage} alt="Logo" className="logo-img h-12 mr-4" />
       </Link>
 
-      <div className="text-white font-mono flex">
-        <Link to="/about" className="hover:text-gray-200 mr-4 no-underline">
-          About
-        </Link>
-        <Link to="/" className="hover:text-gray-200 mr-4 no-underline">
+      <div className="flex font-mono gap-8">
+        <Link to="/" className="text-white text-lg no-underline hover:text-gray-400 duration-300">
           Home
         </Link>
-        <Link to="/contact" className="hover:text-gray-200 no-underline">
+        <Link to="/about" className="text-white text-lg no-underline hover:text-gray-400 duration-300">
+          About
+        </Link>
+        <Link to="/contact" className="text-white text-lg no-underline hover:text-gray-400 duration-300">
           Contact
         </Link>
       </div>
