@@ -15,7 +15,7 @@ const Home = () => {
   };
 
   return (
-    <div className='h-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
+    <div className='h-screen bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
       <div className='absolute inset-0 backdrop-filter backdrop-blur-sm bg-slate-900 bg-opacity-40'>
         <Navbar navbarColor='bg-slate-800 hover:bg-opacity-15 bg-opacity-10 duration-100' />
         <div className='px-36 pt-52 text-left text-white'>
