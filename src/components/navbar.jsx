@@ -1,21 +1,27 @@
-import React from 'react'
-// import background from './background-image.png'
-// import logoImage from './ecoscan-high-resolution-logo-transparent.png'
-import logoImage from './logo-white.png'
+import React from 'react';
+import logoImage from './logo-white2.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className="p-4 flex justify-center">
-    <img src={logoImage} alt="Logo" className='logo-img h-20 mr-4' />
+    <div className="py-4 px-28 flex justify-between items-center bg-slate-800 bg-opacity-10">
+      <Link to="/about" className="no-underline">
+        <img src={logoImage} alt="Logo" className="logo-img h-12 mr-4" />
+      </Link>
 
-    <div className="flex">
-      <span className="text-white">About</span>
-      <span className="text-white">Home</span>
-      <span className="text-white ml-auto">Contact</span>
+      <div className="flex">
+        <Link to="/about" className="text-white mr-4 no-underline">
+          About
+        </Link>
+        <Link to="/" className="text-white mr-4 no-underline">
+          Home
+        </Link>
+        <Link to="/contact" className="text-white no-underline">
+          Contact
+        </Link>
+      </div>
     </div>
+  );
+};
 
-  </div>
-  )
-}
-
-export default Navbar
+export default Navbar;

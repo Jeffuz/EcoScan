@@ -1,6 +1,9 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
 import './index.css';
+import { Routes, Route } from "react-router-dom";
+
+import Home from "./pages/HomePage";
+import AboutPage from './pages/AboutPage';
+
 
 /* 
 To add more paths for the paging, follow:
@@ -14,6 +17,7 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path='/' element={<Home />} />
+        <Route path="/about" element={< AboutPage />} />
       </Routes>
     </>
   );
