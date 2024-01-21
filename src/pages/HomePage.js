@@ -40,11 +40,11 @@ const Home = () => {
     <div className='min-h-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
       <Navbar />
       <div className='p-32 text-left text-white'>
-        <h1 className='text-8xl font-bold mb-6 drop-shadow-xl'>Discover. Link. <br /> Thrive Sustainably.</h1>
-        <p className='text-2xl mb-8 drop-shadow-lg'>
-          Explore products, trace their impact, and join <br />a community dedicated to conscious choices for <br />a greener tomorrow.
+        <h1 className='font-mono text-7xl font-medium mb-8 drop-shadow-xl'>Embark. Sustain. <br /> Preserve Our Earth.</h1>
+        <p className='font-mono text-lg mb-10 drop-shadow-lg'>
+          Empower your choices, unveil eco-impact, <br />and embark on a journey to a greener lifestyle <br />with our enlightening platform.  .
         </p>
-        <button onClick={handleGetStarted} className='bg-slate-800 text-white px-6 py-3 rounded-full'>Get Started</button>
+        <button onClick={handleGetStarted} className='hover:bg-slate-900 font-mono bg-slate-800 text-white px-6 py-3 rounded-full'>Get Started</button>
       </div>
 
       {isSearchOpen && <SearchBar onClose={handleCloseSearch} />}
