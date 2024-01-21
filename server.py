@@ -4,6 +4,9 @@ import requests
 import lxml
 from dotenv import load_dotenv
 from openai import OpenAI
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
 import os
 from headers import HEADERS
 
@@ -11,6 +14,13 @@ from headers import HEADERS
 app = Flask(__name__)
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
+
+# Firebase Setup
+cred = credentials.Certificate('eco-scan-firebase-adminsdk-zb1aw-f22f3c50fd.json')
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://eco-scan-default-rtdb.firebaseio.com'
+})
+ans = db.reference('answers')
 
 # Scrape Content Based on ID
 def scrape_elements_content(url, headers, element_ids):
@@ -53,11 +63,16 @@ def process_AI(queary):
 
     return completion.choices[0].message.content
 
+def write_to_firebase(data):
+    ans.set({
+        'test': data
+    })
+
 @app.route("/")
 def homePage():
     search_input = request.args.get('searchInput', default='', type=str)
     url = str(search_input)
-    print(str(process_AI(feed_scrape_data(url))))
+    write_to_firebase(str(process_AI(feed_scrape_data(url))))
     return str(process_AI(feed_scrape_data(url)))
 
 if __name__ == "__main__":
