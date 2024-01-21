@@ -18,8 +18,6 @@ const MemberCard = ({ image, name, role, major }) => {
   );
 };
 
-// along with visual representations like pie charts illustrating ecological and human health damage factors for enhanced sustainability awareness.
-
 const AboutPage = () => {
   return (
     <div className='h-screen bg-cover bg-no-repeat bg-center relative' style={{ backgroundImage: `url(${background})` }}>
@@ -30,8 +28,7 @@ const AboutPage = () => {
           <p className='font-mono text-xl text-white font-bold mb-8'>Designed by Students of UC Santa Cruz <br />@ CruzHacks2024</p>
           <p className='font-mono text-lg  text-white mx-auto max-w-[600px] text-justify'>
             EcoScan is an environmental impact assessment tool that utilizes data scraped from Amazon (more soon to come)
-            to generate general results page for products, showcasing details such as material, manufacturing,
-            and shipping. 
+            to generate informative results page's for products, showcasing key details such as material composition, environmental impacts from manufacturing and shipping.
           </p>
         </div>
         <div className='flex flex-col bg-slate-800'>

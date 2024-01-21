@@ -63,16 +63,24 @@ def process_AI(queary):
 
     return completion.choices[0].message.content
 
-def write_to_firebase(data):
+def write_to_firebase(data, product_title):
     ans.set({
-        'test': data
+        'test': data,
+        'productTitle': product_title,
     })
+
+def write_product_title_to_firebase(product_title):
+    ans.child('productTitle').set(product_title)
 
 @app.route("/")
 def homePage():
     search_input = request.args.get('searchInput', default='', type=str)
     url = str(search_input)
-    write_to_firebase(str(process_AI(feed_scrape_data(url))))
+
+    scraped_data = feed_scrape_data(url)
+    product_title = scraped_data.get('productTitle', '')
+
+    write_to_firebase(str(process_AI(feed_scrape_data(url))), product_title)
     return str(process_AI(feed_scrape_data(url)))
 
 if __name__ == "__main__":
