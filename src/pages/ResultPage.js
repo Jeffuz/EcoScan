@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { ref, get } from 'firebase/database';
+import db from '../firebaseTest'; 
 
 const ResultPage = () => {
-  const [result, setResult] = useState('');
+  const [data, setData] = useState('');
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/?searchInput=example') 
-      .then(response => response.json())
-      .then(data => {
-        console.log('Response from Flask:', data);
-        setResult(data); 
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }, []); 
+    const ansRef = ref(db, 'answers/test'); 
+    get(ansRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        setData(snapshot.val());
+        console.log(snapshot.val());
+      } else {
+        console.log("No Data Found");
+      }
+    });
+  }, []);
 
   return (
     <div>
-      <div>{result}</div>
+      <div>{data}</div>
     </div>
-  )
+  );
 }
 
 export default ResultPage;
+

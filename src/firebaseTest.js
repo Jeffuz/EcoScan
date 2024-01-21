@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import firebase from "firebase/compat/app";
-import "firebase/compat/database";
-import { get, child } from 'firebase/database';
+import { getDatabase } from "firebase/database";
+// import firebase from "firebase/compat/app";
+// import "firebase/compat/database";
+// import { get, child } from 'firebase/database';
 
 
 // Your web app's Firebase configuration
@@ -18,14 +19,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const ansRef = firebase.database().ref(`answers`);
+const db = getDatabase(app);
+export default db;
 
-export const testFirebase = () => {
-  get(child(ansRef, `test`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-    } else {
-      console.log("No Data Found");
-    }
-  });
-} 
+// const ansRef = firebase.database().ref(`answers`);
+
+// export const testFirebase = () => {
+//   get(child(ansRef, `test`)).then((snapshot) => {
+//     if (snapshot.exists()) {
+//       console.log(snapshot.val());
+//     } else {
+//       console.log("No Data Found");
+//     }
+//   });
+// } 

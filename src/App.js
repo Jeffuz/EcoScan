@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ResultPage from "./pages/ResultPage";
-import { testFirebase } from "./firebaseTest.js";
+// import { testFirebase } from "./firebaseTest.js";
 
 /* 
 To add more paths for the paging, follow:
@@ -13,7 +13,7 @@ To add more paths for the paging, follow:
 */
 
 function App() {
-  testFirebase();
+  // testFirebase();
 
   return (
     <>
