@@ -2,3 +2,7 @@ Flask
 beautifulsoup4
 requests
 lxml
+openai
+python-dotenv
+firebase
+firebase-admin
