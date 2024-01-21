@@ -31,13 +31,30 @@ def feed_scrape_data():
     headers = HEADERS
     scraped_elements = scrape_elements_content(URL, headers, element_ids_to_scrape)
 
-    # for element_id, content in scraped_elements.items():
-    #     print(f"{element_id}: {content}\n\n")
-
-    client = OpenAI(api_key=api_key)
     return scraped_elements
     
-print(feed_scrape_data())
+def process_AI(queary):
+    # Setup for OpenAI
+    load_dotenv()
+    api_key = os.getenv("OPENAI_API_KEY")
+    client = OpenAI(api_key=api_key)
+
+    # Prompt OpenAi
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system",
+            "content": "Given the scraped data from Amazon, describe what materials that the product is made out of and approximately the amount of that material. Describe the environmental impacts of said material taking in consideration how much of it is present in the product. Also describe the envirenmental impact of shipping the product from its manufactured location. Also, output a response in a organized under the headers of: 'Materials', 'Manufacturing', 'Shipping'"
+            },
+            {"role": "user", 
+            "content": str(queary)
+            }
+        ]
+    )
+
+    print(completion.choices[0].message)
+
+process_AI(feed_scrape_data())
 
 # @app.route("/")
 # def homePage():
